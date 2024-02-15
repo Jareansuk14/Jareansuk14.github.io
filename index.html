@@ -98,7 +98,8 @@
     }
 
     async function sendMsg() {
-      if (liff.getContext().type !== "none") {
+      if (liff.getContext().type !== "none"  
+      && liff.getContext().type !== "external") {
         await liff.sendMessages([
           {
             "type": "sticker",
@@ -140,7 +141,6 @@
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
       }
-
     }
 
     async function main() {
