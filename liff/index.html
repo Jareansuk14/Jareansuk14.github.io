@@ -11,7 +11,7 @@
     <div>
         <button id="btnShare2" onclick="shareMsg(false)">Share to only one</button>
     </div>
-    <script src="https://static.line-scdn.net/liff/edge/versions/2.5.0/sdk.js"></script>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
         async function shareMsg(isMulti) {
             const result = await liff.shareTargetPicker(
@@ -23,6 +23,9 @@
                     isMultiple: false
                 }
             )
+            if (result) {
+                //Do somting here
+            }
         }
         async function main() {
             await liff.init({ liffId: "2003446171-LYDeAYoA" })
