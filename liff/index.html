@@ -34,11 +34,13 @@
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
   <button onclick="openWindow()">Open Window</button>
-  <button id="btnScanCode" onclick="window.location='https://line.me/R/nv/QRCodeReader'">Scan Code</button>
+  <button id="btnScanCode" onclick="window.location='https://line.me/R/nv/QRCodeReader'">
+    Scan Code
+  </button>
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
 
-  <script src="js/vconsole.min.js"></script> 
+  <script src="js/vconsole.min.js"></script>
   <script>
     var vConsole = new VConsole()
     console.log("Hello World!")
@@ -58,10 +60,121 @@
     async function shareMsg() {
       await liff.shareTargetPicker([
         {
-          "type": "text",
-          "text": "Hello test"
+          type: "flex",
+          altText: "Flex Message from Share Target Picker",
+          contents: {
+            "type": "bubble",
+            "hero": {
+              "type": "image",
+              "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_2_restaurant.png",
+              "size": "full",
+              "aspectRatio": "20:13",
+              "aspectMode": "cover",
+              "action": {
+                "type": "uri",
+                "uri": "https://linecorp.com"
+              }
+            },
+            "body": {
+              "type": "box",
+              "layout": "vertical",
+              "spacing": "md",
+              "action": {
+                "type": "uri",
+                "uri": "https://linecorp.com"
+              },
+              "contents": [
+                {
+                  "type": "text",
+                  "text": "Brown's Burger",
+                  "size": "xl",
+                  "weight": "bold"
+                },
+                {
+                  "type": "box",
+                  "layout": "vertical",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "icon",
+                          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"
+                        },
+                        {
+                          "type": "text",
+                          "text": "$10.5",
+                          "weight": "bold",
+                          "margin": "sm",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "400kcl",
+                          "size": "sm",
+                          "align": "end",
+                          "color": "#aaaaaa"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "contents": [
+                        {
+                          "type": "icon",
+                          "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"
+                        },
+                        {
+                          "type": "text",
+                          "text": "$15.5",
+                          "weight": "bold",
+                          "margin": "sm",
+                          "flex": 0
+                        },
+                        {
+                          "type": "text",
+                          "text": "550kcl",
+                          "size": "sm",
+                          "align": "end",
+                          "color": "#aaaaaa"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "text",
+                  "text": "Sauce, Onions, Pickles, Lettuce & Cheese",
+                  "wrap": true,
+                  "color": "#aaaaaa",
+                  "size": "xxs"
+                }
+              ]
+            },
+            "footer": {
+              "type": "box",
+              "layout": "vertical",
+              "contents": [
+                {
+                  "type": "button",
+                  "style": "primary",
+                  "color": "#905c44",
+                  "margin": "xxl",
+                  "action": {
+                    "type": "uri",
+                    "label": "Share",
+                    "uri": "https://liff.line.me/2003446171-LYDeAYoA"
+                  }
+                }
+              ]
+            }
+          }
         }
       ])
+      liff.closeWindow()
     }
 
     function logOut() {
